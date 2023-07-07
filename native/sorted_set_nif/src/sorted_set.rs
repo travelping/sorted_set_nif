@@ -268,13 +268,13 @@ mod tests {
         let item = Bitstring(String::from("test-item"));
         match set.add(item) {
             Added(idx) => assert_eq!(idx, 0),
-            Duplicate(idx) => panic!(format!("Unexpected Duplicate({}) on initial add", idx)),
+            Duplicate(idx) => panic!("Unexpected Duplicate({}) on initial add", idx),
         };
         assert_eq!(set.size(), 1);
 
         let item = Bitstring(String::from("test-item"));
         match set.add(item) {
-            Added(idx) => panic!(format!("Unexpected Added({}) on subsequent add", idx)),
+            Added(idx) => panic!("Unexpected Added({}) on subsequent add", idx),
             Duplicate(idx) => assert_eq!(idx, 0),
         }
         assert_eq!(set.size(), 1);
@@ -296,10 +296,10 @@ mod tests {
         assert_eq!(*set.at(2).unwrap(), Bitstring(String::from("ccc")));
 
         match set.at(3) {
-            Some(item) => panic!(format!(
+            Some(item) => panic!(
                 "Unexpected item found after end of set: {:?}",
                 item
-            )),
+            ),
             None => assert!(true),
         };
     }
@@ -325,10 +325,10 @@ mod tests {
 
         match set.remove(&item) {
             Removed(idx) => assert_eq!(idx, 1),
-            NotFound => panic!(format!(
+            NotFound => panic!(
                 "Unexpected NotFound for item that should be present: {:?}",
                 item
-            )),
+            ),
         }
 
         assert_eq!(
@@ -405,10 +405,10 @@ mod tests {
 
         match set.remove(&item) {
             Removed(idx) => assert_eq!(idx, 3),
-            NotFound => panic!(format!(
+            NotFound => panic!(
                 "Unexpected NotFound for item that should be present: {:?}",
                 item
-            )),
+            ),
         }
 
         assert_eq!(
