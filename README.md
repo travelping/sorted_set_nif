@@ -1,7 +1,5 @@
 # Discord.SortedSet
 
-[![Hex.pm Version](http://img.shields.io/hexpm/v/sorted_set_nif.svg?style=flat)](https://hex.pm/packages/sorted_set_nif)
-
 SortedSet is a fast and efficient data structure that provides certain guarantees and
 functionality.  The core data structure and algorithms are implemented in a Native Implemented
 Function in the Rust Programming Language, using the [Rustler crate](https://github.com/hansihe/rustler).
@@ -13,7 +11,7 @@ Add SortedSet to your dependencies and then install with `mix do deps.get, deps.
 ```elixir
 def deps do
   [
-    {:sorted_set_nif, "~> 1.0.0"}
+    {:sorted_set_nif, git: "https://github.com/pertsevds/sorted_set_nif.git"}
   ]
 end
 ```
