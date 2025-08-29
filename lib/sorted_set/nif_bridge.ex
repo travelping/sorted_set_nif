@@ -11,10 +11,24 @@ defmodule Discord.SortedSet.NifBridge do
   interface.
   """
   use Rustler, otp_app: :sorted_set_nif, crate: "sorted_set_nif"
-  use JemallocInfo.RustlerMixin
 
   alias Discord.SortedSet
   alias Discord.SortedSet.Types
+
+  @type jemalloc_allocation_data :: %{
+    :epoch => integer,
+    :active => integer,
+    :allocated => integer,
+    :mapped => integer,
+    :metadata => integer,
+    :resident => integer,
+    :retained => integer
+  }
+
+  @spec jemalloc_allocation_info() :: {:ok, jemalloc_allocation_data} | {:error, any}
+  def jemalloc_allocation_info() do
+    :erlang.nif_error(:nif_not_loaded)
+  end
 
   @doc """
   Creates a new SortedSet.
