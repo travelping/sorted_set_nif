@@ -8,7 +8,7 @@ mod supported_term;
 use std::sync::Mutex;
 
 use jemallocator::Jemalloc;
-use rustler::resource::ResourceArc;
+use rustler::ResourceArc;
 use rustler::types::tuple::get_tuple;
 use rustler::{Atom, Env, Term};
 
@@ -76,25 +76,13 @@ pub enum AppendBucketResult {
 
 rustler::init!(
     "Elixir.Discord.SortedSet.NifBridge",
-    [
-        empty,
-        new,
-        append_bucket,
-        size,
-        add,
-        remove,
-        at,
-        slice,
-        find_index,
-        debug,
-        to_list,
-        jemalloc_info::jemalloc_allocation_info,
-    ],
     load = load
 );
 
-fn load(env: Env, _info: Term) -> bool {
-    rustler::resource!(SortedSetResource, env);
+#[rustler::resource_impl()]
+impl rustler::Resource for SortedSetResource {}
+
+fn load(_env: Env, _info: Term) -> bool {
     true
 }
 
