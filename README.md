@@ -11,7 +11,7 @@ Add SortedSet to your dependencies and then install with `mix do deps.get, deps.
 ```elixir
 def deps do
   [
-    {:sorted_set_nif, git: "https://github.com/pertsevds/sorted_set_nif.git"}
+    {:sorted_set_nif, git: "https://github.com/travelping/sorted_set_nif.git"}
   ]
 end
 ```
